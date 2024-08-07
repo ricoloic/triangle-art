@@ -1,12 +1,10 @@
 let palette;
 let graphic;
 
-const circleStroke = true;
+const circleStroke = false;
 
 function setup() {
     graphic = createGraphics(window.innerWidth, window.innerHeight)
-    //graphic.stroke(0);
-    //graphic.strokeWeight(2);
     graphic.noStroke();
     graphic.angleMode(DEGREES);
     graphic.pixelDensity(1);
@@ -15,7 +13,7 @@ function setup() {
     angleMode(DEGREES);
     pixelDensity(1);
 
-    palette = COLOR_PALETTES.pastel2.map((p) => p.color) // random(Object.values(COLOR_PALETTES)).map((p) => p.color);
+    palette = COLOR_PALETTES.happy.map((p) => p.color) // random(Object.values(COLOR_PALETTES)).map((p) => p.color);
 
 
     for (let i = 0; i < 5000; i++) {
@@ -24,9 +22,10 @@ function setup() {
         graphic.fill(random(palette));
         createTriangle();
         graphic.pop();
-        copy(graphic, 0, 0, width, height, 0, 0, width, height);
     }
-
+    
+    copy(graphic, 0, 0, width, height, 0, 0, width, height);
+    
     for (let i = 0; i < 30; i++) {
         push();
         copyCircle();
@@ -106,4 +105,3 @@ function createTriangle() {
     graphic.vertex(current.x, current.y);
     graphic.endShape(CLOSE);
 }
-
